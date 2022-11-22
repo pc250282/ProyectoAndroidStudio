@@ -1,24 +1,34 @@
 package com.example.proyectologin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageView
+import android.widget.Button
 import android.widget.TextView
 
 class SegundaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_segunda)
-        //capturamos informacion extra que nos llega
-        val bundle=intent.extras
-        //obtengo el dato especifico
-        val user=bundle?.getString("user")
-        //Declaro varible
+
+
+
+        val obj1=intent.getParcelableExtra<Users>("a")
         val txtWelcome=findViewById<TextView>(R.id.txtWelcome)
-        val imgWelcome=findViewById<ImageView>(R.id.imgWelcome)
+        val btnRegistrar=findViewById<Button>(R.id.btnRegistrar)
+        if(obj1!=null){
+        val nombre=obj1.nameUser
+            txtWelcome.setText(nombre)
+            }
+        //Declaro varible
+
         //Seteo el texto con valor de la variable user.
-        txtWelcome.setText("Bienvenido: "+user)
+
+        btnRegistrar.setOnClickListener {
+            var intent= Intent(this,RegistroDatos::class.java)
+            startActivity(intent)
+        }
+
 
 
     }
