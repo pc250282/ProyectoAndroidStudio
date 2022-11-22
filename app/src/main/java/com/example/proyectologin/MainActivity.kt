@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         var convertStringPass = txtPass.text.toString()
         val user1 = Users(convertStringUser, convertStringPass)
         var intent = Intent(this, SegundaActivity::class.java)
-        intent.putExtra("a", user1)
+        intent.putExtra("mostrar", user1)
         startActivity(intent)
 
     }

@@ -13,22 +13,23 @@ class SegundaActivity : AppCompatActivity() {
 
 
 
-        val obj1=intent.getParcelableExtra<Users>("a")
+        val obj1=intent.getParcelableExtra<Usuario>("mostrar")
         val txtWelcome=findViewById<TextView>(R.id.txtWelcome)
-        val btnRegistrar=findViewById<Button>(R.id.btnRegistrar)
+        val btnVerDatos=findViewById<Button>(R.id.btnVerMisDatos)
         if(obj1!=null){
-        val nombre=obj1.nameUser
-            txtWelcome.setText(nombre)
+        val nombre=obj1.nombre
+            txtWelcome.setText(obj1.nombre)
             }
         //Declaro varible
 
         //Seteo el texto con valor de la variable user.
 
-        btnRegistrar.setOnClickListener {
-            var intent= Intent(this,RegistroDatos::class.java)
+
+        btnVerDatos.setOnClickListener {
+            val intent = Intent(this, MostrarDatosPersona::class.java)
+            intent.putExtra("usuario",obj1)
             startActivity(intent)
         }
-
 
 
     }

@@ -9,10 +9,21 @@ data class Usuario(var password:String="") : Persona(), Parcelable {
 
     constructor(parcel: Parcel) : this() {
         password = parcel.readString().toString()
+        nombre=parcel.readString().toString()
+        apellido=parcel.readString().toString()
+        documento=parcel.readString().toString()
+        direccion=parcel.readString().toString()
+        mail=parcel.readString().toString()
+
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(password)
+        parcel.writeString(nombre)
+        parcel.writeString(apellido)
+        parcel.writeString(documento)
+        parcel.writeString(direccion)
+        parcel.writeString(mail)
     }
 
     override fun describeContents(): Int {

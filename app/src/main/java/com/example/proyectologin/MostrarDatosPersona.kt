@@ -9,26 +9,32 @@ import android.widget.TextView
 class MostrarDatosPersona : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_mostrar_datos_persona)
-        var lblNombre=findViewById<TextView>(R.id.lblNombre)
-        var lblApellido=findViewById<TextView>(R.id.lblApellido)
-        var lblDocumento=findViewById<TextView>(R.id.lblDocumento)
-        var lblDireccion=findViewById<TextView>(R.id.lblDireccion)
-        var lblMail=findViewById<TextView>(R.id.lblMail)
-        var btnVolver=findViewById<Button>(R.id.btnVolver)
+        val lblNombre=findViewById<TextView>(R.id.lblNombre)
+        val lblApellido=findViewById<TextView>(R.id.lblApellido)
+        val lblDocumento=findViewById<TextView>(R.id.lblDocumento)
+        val lblDireccion=findViewById<TextView>(R.id.lblDireccion)
+        val lblMail=findViewById<TextView>(R.id.lblMail)
+        val btnVolver=findViewById<Button>(R.id.btnVolver)
         super.onCreate(savedInstanceState)
-        var usuarioRecibido=intent.getParcelableExtra<Usuario>("usuario")
+        val usuarioRecibido=intent.getParcelableExtra<Usuario>("usuario")
 
         if(usuarioRecibido!=null){
 
 
             lblNombre.setText(usuarioRecibido.nombre)
+            lblApellido.setText(usuarioRecibido.apellido)
+            lblDocumento.setText(usuarioRecibido.documento)
+            lblDireccion.setText(usuarioRecibido.direccion)
+            lblMail.setText(usuarioRecibido.mail)
 
+            btnVolver.setOnClickListener {
+                val intent = Intent(this, SegundaActivity::class.java)
+                intent.putExtra("mostrar",usuarioRecibido)
+                startActivity(intent)
+            }
         }
 
-        /*btnVolver.setOnClickListener {
-            var intent = Intent(this, SegundaActivity::class.java)
-            startActivity(intent)
-        }*/
+
 
     }
 }
