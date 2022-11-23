@@ -1,8 +1,9 @@
 package com.example.proyectologin
-/*
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+
 
 class DogsAdapter(private val images:List<String>):RecyclerView.Adapter<DogViewHolder>() {
 
@@ -13,9 +14,9 @@ class DogsAdapter(private val images:List<String>):RecyclerView.Adapter<DogViewH
     override fun getItemCount(): Int =images.size
 
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
-        val item:String=images(position)
+        val item=images[position]
         holder.bind(item)
     }
 
 
-}*/
+}

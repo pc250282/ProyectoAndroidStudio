@@ -5,32 +5,31 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.example.proyectologin.databinding.ActivityMostrarDatosPersonaBinding
 
 class mostrar_datos_persona : AppCompatActivity() {
+    private lateinit var binding:ActivityMostrarDatosPersonaBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_mostrar_datos_persona)
-        val lblNombre=findViewById<TextView>(R.id.lblNombre)
-        val lblApellido=findViewById<TextView>(R.id.lblApellido)
-        val lblDocumento=findViewById<TextView>(R.id.lblDocumento)
-        val lblDireccion=findViewById<TextView>(R.id.lblDireccion)
-        val lblMail=findViewById<TextView>(R.id.lblMail)
-        val btnVolver=findViewById<Button>(R.id.btnVolver)
         super.onCreate(savedInstanceState)
+        binding=ActivityMostrarDatosPersonaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val usuarioRecibido=intent.getParcelableExtra<Usuario>("usuario")
 
         if(usuarioRecibido!=null){
 
 
-            lblNombre.setText(usuarioRecibido.nombre)
-            lblApellido.setText(usuarioRecibido.apellido)
-            lblDocumento.setText(usuarioRecibido.documento)
-            lblDireccion.setText(usuarioRecibido.direccion)
-            lblMail.setText(usuarioRecibido.mail)
+            binding.lblNombre.setText(usuarioRecibido.nombre)
+            binding.lblApellido.setText(usuarioRecibido.apellido)
+            binding.lblDocumento.setText(usuarioRecibido.documento)
+            binding.lblDireccion.setText(usuarioRecibido.direccion)
+            binding.lblMail.setText(usuarioRecibido.mail)
 
-            btnVolver.setOnClickListener {
+            binding.btnVolver.setOnClickListener {
                 val intent = Intent(this, menu_usuario::class.java)
                 intent.putExtra("mostrar",usuarioRecibido)
                 startActivity(intent)
+
             }
         }
 
