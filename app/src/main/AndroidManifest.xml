@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.proyectologin">
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,13 +16,19 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".MostrarDatosPersona"
+            android:name=".item_dog"
             android:exported="false" />
         <activity
-            android:name=".RegistroDatos"
+            android:name=".utilidad_busca_raza"
             android:exported="false" />
         <activity
-            android:name=".SegundaActivity"
+            android:name=".mostrar_datos_persona"
+            android:exported="false" />
+        <activity
+            android:name=".registro_datos"
+            android:exported="false" />
+        <activity
+            android:name=".menu_usuario"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

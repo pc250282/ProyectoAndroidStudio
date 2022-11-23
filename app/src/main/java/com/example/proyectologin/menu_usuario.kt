@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 
-class SegundaActivity : AppCompatActivity() {
+class menu_usuario : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_segunda)
@@ -26,7 +26,7 @@ class SegundaActivity : AppCompatActivity() {
 
 
         btnVerDatos.setOnClickListener {
-            val intent = Intent(this, MostrarDatosPersona::class.java)
+            val intent = Intent(this, mostrar_datos_persona::class.java)
             intent.putExtra("usuario",obj1)
             startActivity(intent)
         }

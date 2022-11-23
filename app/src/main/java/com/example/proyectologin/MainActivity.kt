@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         btnRegistrarse.setOnClickListener {
             it.esconderTeclado()
-            var intent = Intent(this, RegistroDatos::class.java)
+            var intent = Intent(this, registro_datos::class.java)
             startActivity(intent)
         }
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         var convertStringUser = txtUser.text.toString()
         var convertStringPass = txtPass.text.toString()
         val user1 = Users(convertStringUser, convertStringPass)
-        var intent = Intent(this, SegundaActivity::class.java)
+        var intent = Intent(this, menu_usuario::class.java)
         intent.putExtra("mostrar", user1)
         startActivity(intent)
 

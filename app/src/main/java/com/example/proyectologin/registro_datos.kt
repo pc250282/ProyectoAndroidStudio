@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 
-class RegistroDatos : AppCompatActivity() {
+class registro_datos : AppCompatActivity() {
     private val listaUsuariosArrayList=ArrayList<Usuario>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +40,7 @@ class RegistroDatos : AppCompatActivity() {
         usuarioNuevo.documento=txtDocumento.text.toString()
         usuarioNuevo.mail=txtEmail.text.toString()
 
-
-
-
-
-
-        val intent= Intent(this,MostrarDatosPersona::class.java)
+        val intent= Intent(this,mostrar_datos_persona::class.java)
         intent.putExtra("usuario",usuarioNuevo)
         startActivity(intent)
     }

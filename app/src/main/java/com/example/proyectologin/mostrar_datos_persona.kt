@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 
-class MostrarDatosPersona : AppCompatActivity() {
+class mostrar_datos_persona : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_mostrar_datos_persona)
         val lblNombre=findViewById<TextView>(R.id.lblNombre)
@@ -28,7 +28,7 @@ class MostrarDatosPersona : AppCompatActivity() {
             lblMail.setText(usuarioRecibido.mail)
 
             btnVolver.setOnClickListener {
-                val intent = Intent(this, SegundaActivity::class.java)
+                val intent = Intent(this, menu_usuario::class.java)
                 intent.putExtra("mostrar",usuarioRecibido)
                 startActivity(intent)
             }
