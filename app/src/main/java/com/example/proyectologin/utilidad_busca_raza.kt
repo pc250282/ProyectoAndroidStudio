@@ -14,7 +14,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class utilidad_busca_raza : AppCompatActivity(), SearchView.OnQueryTextListener {
+class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
 
     private lateinit var binding:ActivityUtilidadBuscaRazaBinding
     private lateinit var adapter: DogsAdapter
@@ -29,8 +29,10 @@ class utilidad_busca_raza : AppCompatActivity(), SearchView.OnQueryTextListener 
     }
 
     private fun initRecyclerView() {
-    binding.rvDogs.layoutManager=LinearLayoutManager(this)
+    adapter= DogsAdapter(dogImages)
+        binding.rvDogs.layoutManager=LinearLayoutManager(this)
         binding.rvDogs.adapter=adapter
+
     }
 
     //Intanciamos retrofit
@@ -48,7 +50,7 @@ class utilidad_busca_raza : AppCompatActivity(), SearchView.OnQueryTextListener 
             val puppies:DogsResponse? = call.body()
             runOnUiThread{
                 if(call.isSuccessful){
-                val images:List<String> = puppies?.images?: emptyList()
+                val images: List<String> = puppies?.images ?: emptyList()
                     dogImages.clear()
                     dogImages.addAll(images)
                     adapter.notifyDataSetChanged()

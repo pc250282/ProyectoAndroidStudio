@@ -20,7 +20,7 @@ class menu_usuario : AppCompatActivity() {
 
 
         if(obj1!=null){
-        val nombre=obj1.nombre
+            val nombre=obj1.nombre
             binding.txtWelcome.setText("Bienvenido: "+ obj1.nombre)
             }
         //Declaro varible
@@ -28,11 +28,11 @@ class menu_usuario : AppCompatActivity() {
         //Seteo el texto con valor de la variable user.
 
 
-        /*binding.btnVerMisDatos.setOnClickListener {
+        binding.btnVerMisDatos.setOnClickListener {
             val intent = Intent(this, mostrar_datos_persona::class.java)
             intent.putExtra("usuario",obj1)
             startActivity(intent)
-        }*/
+        }
 
         binding.btnUtilidad.setOnClickListener {
             val siguiente=Intent(this, utilidad_busca_raza::class.java)

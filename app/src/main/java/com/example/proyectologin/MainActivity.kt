@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnLogin.setOnClickListener {
-
             validaciones()
        }
 
@@ -27,8 +26,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
     }
 
     fun setData() {
@@ -36,9 +33,9 @@ class MainActivity : AppCompatActivity() {
         var convertStringUser = binding.txtUser.text.toString()
         var convertStringPass = binding.txtPass.text.toString()
         val user1 = Users(convertStringUser, convertStringPass)
-        var intent = Intent(this, menu_usuario::class.java)
-        intent.putExtra("mostrar", user1)
-        startActivity(intent)
+        val siguiente=Intent(this, utilidad_busca_raza::class.java)
+        //siguiente.putExtra("mostrar", user1)
+        startActivity(siguiente)
 
     }
 

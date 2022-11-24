@@ -17,8 +17,7 @@ class mostrar_datos_persona : AppCompatActivity() {
         val usuarioRecibido=intent.getParcelableExtra<Usuario>("usuario")
 
         if(usuarioRecibido!=null){
-
-
+            
             binding.lblNombre.setText(usuarioRecibido.nombre)
             binding.lblApellido.setText(usuarioRecibido.apellido)
             binding.lblDocumento.setText(usuarioRecibido.documento)
