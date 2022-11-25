@@ -10,3 +10,4 @@ fun View.esconderTeclado(){
     val input=this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     input.hideSoftInputFromWindow(windowToken, 0)
 }
+

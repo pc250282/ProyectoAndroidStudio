@@ -2,8 +2,10 @@ package com.example.proyectologin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isEmpty
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectologin.databinding.ActivityUtilidadBuscaRazaBinding
 import kotlinx.coroutines.CoroutineScope
@@ -25,7 +27,13 @@ class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
         binding = ActivityUtilidadBuscaRazaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.svDogs.setOnQueryTextListener(this)
-        initRecyclerView()
+        if (binding.svDogs.isEmpty()){
+            Toast.makeText(this,"Ingresa la raza a buscar",Toast.LENGTH_SHORT).show()
+        }else{
+            initRecyclerView()
+        }
+
+
     }
 
     private fun initRecyclerView() {
@@ -43,7 +51,7 @@ class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
             .build()
     }
 
-
+//funcion para buscar
     private fun searchByName(query: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val call:Response<DogsResponse> = getRetrofit().create(APIService::class.java).getDogsByBreeds("$query/images")
@@ -59,8 +67,7 @@ class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
                     mostrarError()
                 }
             }
-
-
+            esconderTeclado()
         }
     }
 
@@ -77,6 +84,11 @@ class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return true
+    }
+    //Esconde el teclado luego de una busqueda
+    fun esconderTeclado(){
+        val inm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        inm.hideSoftInputFromWindow(binding.pantallaPrincipal.windowToken,0)
     }
 
 }

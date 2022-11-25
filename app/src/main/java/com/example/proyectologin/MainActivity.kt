@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.core.view.isVisible
 import com.example.proyectologin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnInfo.setOnClickListener{
+            mostrarInfoApp()
+        }
+
+
+
+
     }
 
     fun setData() {
@@ -46,6 +54,12 @@ class MainActivity : AppCompatActivity() {
         }else   {
             setData()
         }
+    }
+
+    fun mostrarInfoApp(){
+        binding.imgPrincipal.isVisible=false
+
+
     }
 
 }
