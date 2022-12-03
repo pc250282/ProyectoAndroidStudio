@@ -1,5 +1,6 @@
 package com.example.proyectologin
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        val usuarioLogin=Usuario("1234")
+        usuarioLogin.mail="pabloacalvo@live.com"
+        usuarioLogin.nombre="Pablo"
+        usuarioLogin.apellido="Calvo"
+        usuarioLogin.direccion="Manuel castro"
+        usuarioLogin.documento="35994686"
+
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -18,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnLogin.setOnClickListener {
-            validaciones()
+            validacionesUsuarioExistente()
        }
 
         binding.btnRegistrarse.setOnClickListener {
@@ -30,10 +38,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnInfo.setOnClickListener{
             mostrarInfoApp()
         }
-
-
-
-
+        
     }
 
     fun setData() {
@@ -47,9 +52,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun validaciones(){
+    fun validacionesUsuarioExistente(){
 
-        if(binding.txtUser.text.isEmpty()||binding.txtPass.text.isEmpty()){
+        if(binding.txtUser.editableText.isEmpty()||binding.txtPass.editableText.isEmpty()){
             Toast.makeText(this,"Completa ambos datos para ingresar",Toast.LENGTH_SHORT).show()
         }else   {
             setData()
@@ -58,9 +63,16 @@ class MainActivity : AppCompatActivity() {
 
     fun mostrarInfoApp(){
         binding.imgPrincipal.isVisible=false
-
-
     }
+
+    fun validacionEmail(): Boolean{
+      val email = binding.txtUser.editableText?.toString()
+         if(email.isEmpty()){
+            binding.txtUser.error="El campo no puede estar vacio"
+        }
+    return false
+    }
+
 
 }
 

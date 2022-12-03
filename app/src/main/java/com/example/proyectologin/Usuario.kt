@@ -17,6 +17,8 @@ data class Usuario(var password:String="") : Persona(), Parcelable {
 
     }
 
+
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(password)
         parcel.writeString(nombre)

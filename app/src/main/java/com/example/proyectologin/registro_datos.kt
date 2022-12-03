@@ -9,24 +9,20 @@ import com.example.proyectologin.databinding.ActivityRegistroDatosBinding
 
 class registro_datos : AppCompatActivity() {
     lateinit var binding: ActivityRegistroDatosBinding
-    private val listaUsuariosArrayList=ArrayList<Usuario>()
+    private val listaUsuariosArrayList = ArrayList<Usuario>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityRegistroDatosBinding.inflate(layoutInflater)
+        binding = ActivityRegistroDatosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         binding.btnGuardar.setOnClickListener {
             it.esconderTeclado()
-            if(binding.sltCondiciones.isChecked)
-            setDatos()
-            else{
-                Toast.makeText(this,"DEBE ACEPTAR LAS CONDICIONES", Toast.LENGTH_SHORT).show()
-            }
-
+            validaciones()
         }
 
     }
+
 
     fun setDatos(){
         val usuarioNuevo=Usuario()
@@ -41,4 +37,19 @@ class registro_datos : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun validaciones(){
+        if (binding.txtNombre.text.isEmpty() || binding.txtApellido.text.isEmpty() ||
+            binding.txtDireccion.text.isEmpty() || binding.txtDocumento.text.isEmpty() ||
+            binding.txtEmail.text.isEmpty()){
+            Toast.makeText(this,"DEBES COMPLETAR TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show()
+        }else {
+            if(binding.sltCondiciones.isChecked){
+            setDatos()
+            }
+            else{
+                Toast.makeText(this,"DEBE ACEPTAR LAS CONDICIONES", Toast.LENGTH_SHORT).show()
+                }
+             }
+
+    }
 }

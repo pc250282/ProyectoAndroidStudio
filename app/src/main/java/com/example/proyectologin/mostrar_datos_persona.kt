@@ -29,11 +29,15 @@ class mostrar_datos_persona : AppCompatActivity() {
             binding.lblMail.setText(usuarioRecibido.mail)
             }
 
-        binding.btnVolver.setOnClickListener {
+        binding.btnGuardaUsuario.setOnClickListener{
             val intent = Intent(this, menu_usuario::class.java)
             intent.putExtra("mostrar", usuarioRecibido)
             Toast.makeText(this,"DATOS GUARDADOS", Toast.LENGTH_SHORT).show()
             startActivity(intent)
+        }
+
+        binding.btnVolver.setOnClickListener {
+            onBackPressed()
         }
 
 
