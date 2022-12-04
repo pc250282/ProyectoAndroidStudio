@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import androidx.core.util.PatternsCompat
-import com.example.proyectologin.databinding.ActivityMainBinding
 import com.example.proyectologin.databinding.ActivityRegistroDatosBinding
 import java.util.regex.Pattern
 

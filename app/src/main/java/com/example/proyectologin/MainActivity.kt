@@ -1,5 +1,6 @@
 package com.example.proyectologin
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity() {
     fun mostrarInfoApp(){
         binding.imgPrincipal.isVisible=false
     }
+
 
     fun validacionEmail(): Boolean{
       val email = binding.txtUser.editableText.toString()

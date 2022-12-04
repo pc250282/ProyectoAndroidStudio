@@ -1,15 +1,12 @@
 package com.example.proyectologin
 
 import android.content.Intent
-import android.opengl.Visibility
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.isVisible
 import com.example.proyectologin.databinding.ActivityMostrarDatosPersonaBinding
-import com.example.proyectologin.databinding.ActivityUtilidadBuscaRazaBinding
+
 
 class mostrar_datos_persona : AppCompatActivity() {
     private lateinit var binding:ActivityMostrarDatosPersonaBinding
@@ -22,11 +19,11 @@ class mostrar_datos_persona : AppCompatActivity() {
 
         if(usuarioRecibido!=null){
             
-            binding.lblNombre.setText(usuarioRecibido.nombre)
-            binding.lblApellido.setText(usuarioRecibido.apellido)
-            binding.lblDocumento.setText(usuarioRecibido.documento)
-            binding.lblDireccion.setText(usuarioRecibido.direccion)
-            binding.lblMail.setText(usuarioRecibido.mail)
+            binding.lblNombre.setText("NOMBRE: "+usuarioRecibido.nombre)
+            binding.lblApellido.setText("APELLIDO: "+usuarioRecibido.apellido)
+            binding.lblDocumento.setText("DOCUMENTO: "+usuarioRecibido.documento)
+            binding.lblDireccion.setText("DIRECCION: "+usuarioRecibido.direccion)
+            binding.lblMail.setText("USUARIO: "+usuarioRecibido.mail)
             }
 
         binding.btnGuardaUsuario.setOnClickListener{
