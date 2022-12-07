@@ -40,6 +40,7 @@
         android:layout_width="170dp"
         android:layout_height="60dp"
         android:text="BUSCAR RAZA"
+        android:background="#F05B2A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.866"

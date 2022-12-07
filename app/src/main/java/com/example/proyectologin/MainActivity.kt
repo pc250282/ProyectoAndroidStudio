@@ -60,7 +60,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mostrarInfoApp(){
-        binding.imgPrincipal.isVisible=false
+        var appInfo=Intent(this, App_info::class.java)
+        startActivity(appInfo)
     }
 
 

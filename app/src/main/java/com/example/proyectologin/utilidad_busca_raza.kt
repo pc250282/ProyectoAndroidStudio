@@ -36,6 +36,8 @@ class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
 
     }
 
+    /*Creamos el recyclerview para visualizar las imagenes de la repuesta el adapter va tener un listado
+    de imagenes es mutable para poder reiniciar la vista en una nueva busqueda*/
     private fun initRecyclerView() {
     adapter= DogsAdapter(dogImages)
         binding.rvDogs.layoutManager=LinearLayoutManager(this)
@@ -43,7 +45,7 @@ class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
 
     }
 
-    //Intanciamos retrofit
+    //Intanciamos retrofit, configuramos la URL base y construimos el json con GsonConverter
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://dog.ceo/api/breed/")
@@ -51,14 +53,18 @@ class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
             .build()
     }
 
-//funcion para buscar
+/*funcion para buscar por nombre de raza utilizando corrutinas para poder trabajar en un hilo secundario
+para mejor rendimiento mientras esperamos la repuesta de internet
+ */
     private fun searchByName(query: String) {
         CoroutineScope(Dispatchers.IO).launch {
+            //Obtenemos la repuesta que esta dentro del body, si la repuesta es correcta agregamos los items a la lista
             val call:Response<DogsResponse> = getRetrofit().create(APIService::class.java).getDogsByBreeds("$query/images")
             val puppies:DogsResponse? = call.body()
             runOnUiThread{
                 if(call.isSuccessful){
-                val images: List<String> = puppies?.images ?: emptyList()
+                //Si es nulo tenemos una lista vacia
+                    val images: List<String> = puppies?.images ?: emptyList()
                     dogImages.clear()
                     dogImages.addAll(images)
                     adapter.notifyDataSetChanged()
@@ -71,6 +77,7 @@ class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
         }
     }
 
+    //Funcion que muestra el error ante la no  de la Api
     private fun mostrarError(){
         Toast.makeText(this,"Ha ocurrido un error",Toast.LENGTH_SHORT).show()
     }
@@ -81,6 +88,7 @@ class utilidad_busca_raza : AppCompatActivity(),SearchView.OnQueryTextListener {
         }
         return true
     }
+
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return true
